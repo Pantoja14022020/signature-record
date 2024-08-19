@@ -1510,7 +1510,7 @@ const App = () => {
                 onMouseUp={stopDrawing}
                 onMouseLeave={stopDrawing}
 
-                nTouchStart={startDrawing}
+                onTouchStart={startDrawing}
                 onTouchMove={draw}
                 onTouchEnd={stopDrawing}
                 onTouchCancel={stopDrawing}
