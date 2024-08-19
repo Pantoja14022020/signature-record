@@ -1495,8 +1495,8 @@ const App = () => {
         <div style={{ textAlign: 'center', position:'relative'}}>
             <canvas
                 ref={canvasRef}
-                width={600}
-                height={400}
+                width={300}
+                height={300}
                 style={{
                     border: '1px solid #000',
                     display: 'block',
@@ -1510,7 +1510,7 @@ const App = () => {
                 onMouseUp={stopDrawing}
                 onMouseLeave={stopDrawing}
             />
-            <button
+            {/*<button
                 onClick={clearCanvas}
                 style={{
                     marginTop: '10px',
@@ -1520,12 +1520,12 @@ const App = () => {
                 }}
             >
                 Limpiar
-            </button>
+            </button>*/}
             <video
               ref={videoRef}
               style={{ display: 'none', backgroundColor:"#fff", position:'absolute', zIndex:'0'}} // Ocultar el elemento de video
             />
-            <video ref={videoAux} autoPlay controls></video>
+            {/*<video ref={videoAux} autoPlay controls></video>*/}
 
         </div>
     );
