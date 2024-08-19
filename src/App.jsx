@@ -1362,7 +1362,9 @@ const App = () => {
         if (!isDrawing) return;
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
-        ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+        //ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+        const { offsetX, offsetY } = getClientPosition(e, canvas);
+        ctx.lineTo(offsetX, offsetY);
         ctx.stroke();
     };
 
@@ -1488,6 +1490,36 @@ const App = () => {
 
       
     },[canvasRef])
+
+
+
+
+
+
+
+    const getClientPosition = (e, canvas) => {
+      let rect = canvas.getBoundingClientRect();
+      let scaleX = canvas.width / rect.width;
+      let scaleY = canvas.height / rect.height;
+      let x, y;
+
+      if (e.touches) {
+          // Para eventos táctiles
+          x = e.touches[0].clientX;
+          y = e.touches[0].clientY;
+      } else {
+          // Para eventos del ratón
+          x = e.clientX;
+          y = e.clientY;
+      }
+
+      x = (x - rect.left) * scaleX;
+      y = (y - rect.top) * scaleY;
+
+      return { offsetX: x, offsetY: y };
+  };
+
+
 
 
 
